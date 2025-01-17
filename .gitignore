@@ -1,0 +1,7 @@
+.idea
+tmp
+test.sh
+test/
+efficiency.json
+node-*.tar.gz
+Makefile.test
