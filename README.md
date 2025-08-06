@@ -26,7 +26,23 @@
 
 Среда для сборки контейнера с зависимостями для NodeJS. Основан на [сборочных компонентах NodeJS](https://github.com/nodejs/node/blob/main/BUILDING.md) и таблице соотношения [Debian-Astra](https://wiki.astralinux.ru/pages/viewpage.action?pageId=53646577)
 
-::include{file=docs/integration.md}
+Присоединяйтесь к нашим социальным сетям:
+
+<!-- markdownlint-disable MD033 -->
+
+<div class="badges-row-public">
+  <h4 align="center">
+    <a href="https://t.me/NGR_Softlab">
+      <img src="https://shields.io/badge/ngr-telegram-blue?logo=telegram&style=for-the-badge" alt="NGR Social Telegram" height="40" />
+    </a>
+    &emsp; &emsp; &emsp;
+    <a href="https://www.ngrsoftlab.ru/?utm_source=tg&utm_medium=start" >
+      <img src="https://shields.io/badge/ngr-web--page-yellow?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjIyLjcgMCA1MS45IDUxLjciPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNzQuNSAwSDYzLjhsMy42IDMuNWMuNy43LjcgMS45IDAgMi43LS43LjctMS45LjctMi42IDBMNTguOSAwSDUzbDE0LjUgMTMuOWMuNy43LjcgMS45IDAgMi43LS43LjctMS45LjctMi42IDBMNDkgMGgtNi44bDI1LjMgMjQuM2MuNy43LjcgMS45IDAgMi43LS43LjctMS45LjctMi42IDBMMzkgMGgtNy43bDM2LjEgMzQuN2MuNy43LjcgMS45IDAgMi42cy0xLjkuNy0yLjYgMEwyOSAwYy0zLjUuNC02LjMgMy40LTYuMyA3djQ0LjdoMTAuNmwtMy42LTMuNGMtLjctLjctLjctMS45IDAtMi42czEuOS0uNyAyLjcgMGw1LjggNmg1LjlMMjkuNyAzNy45Yy0uNy0uNy0uNy0xLjkgMC0yLjcuNy0uNyAxLjktLjcgMi43IDBsMTUuOCAxNi40SDU1TDI5LjggMjcuNGMtLjctLjctLjctMS45IDAtMi43LjctLjcgMS45LS43IDIuNyAwbDI1LjggMjYuOEg2NkwyOS45IDE2LjljLS43LS43LS43LTEuOSAwLTIuNnMxLjktLjcgMi43IDBsMzUuNyAzNy4yYzMuNS0uMyA2LjMtMy4zIDYuMy03VjB6IiBmaWxsPSIjRjhBRDAwIi8+PC9zdmc+" alt="NGR Social Media" height="40" />
+    </a>
+  </h4>
+</div>
+
+<!-- markdownlint-enable MD033 -->
 
 ## Contents
 
@@ -43,6 +59,7 @@
     - [How test local](#how-test-local)
   - [Issues and solutions](#issues-and-solutions)
   - [How to install it](#how-to-install-it)
+    - [Cya!](#cya)
 
 ## [What it is](#contents)
 
@@ -65,12 +82,10 @@ pre-commit installed at .git/hooks/commit-msg
 pre-commit installed at .git/hooks/pre-push
 ```
 
->>> [!warning] Предупреждение
-
-- Чтобы проверить свои изменения, воспользуйтесь командой `pre-commit run --all-files`
-- Чтобы проверить конкретную задачу, воспользуетесь командой `pre-commit run <target> --all-files`
-- Если Вы понимаете что творите и хотите пропустить проверку `pre-commit`-ом воспользуйтесь `--no-verify`, пример `git commit -m "Добавил изменения и не хочу проверки" --no-verify`
->>>
+> [!warning]
+> Чтобы проверить свои изменения, воспользуйтесь командой `pre-commit run --all-files`.
+> Чтобы проверить конкретную задачу, воспользуетесь командой `pre-commit run <target> --all-files`.
+> Если Вы понимаете что творите и хотите пропустить проверку `pre-commit`-ом воспользуйтесь `--no-verify`, пример `git commit -m "Добавил изменения и не хочу проверки" --no-verify`
 
 Собрать образ `Astra Linux based`
 
@@ -134,7 +149,7 @@ make[1]: *** [Makefile:149: node] Error 1
 
 ### [Assembly requirements](#contents)
 
->>> [!note] Особенности сборки
+**Особенности сборки**:
 Существует 2 образа под сборку NodeJS из исходного кода:
 
 - nodejs-build-utils:1.0.0-astra1.7.5
@@ -142,7 +157,6 @@ make[1]: *** [Makefile:149: node] Error 1
 
 Каждая из них имеет смысл, т.к. собирают NodeJS определенной версии. Сборка до `21.7.3` ([LTS](https://nodejs.org/en/about/previous-releases#looking-for-the-latest-release-of-a-version-branch) 20.18.1 Iron) производиться тегом `1.0.0-astra1.7.5`. Остальные версии, что выше, тегом `1.0.0-astra1.8.1`
 Причина этой сборки - версии `python3` и `gcc` компиляторов, что участвует в сборке. Соответственно, при установке в ОС-ы необходимо учитывать данные ограничения
->>>
 
 ### [Assembly variables](#contents)
 
@@ -282,12 +296,11 @@ out/Release/node /builds/borrowed-components/interpreters/nodejs/node/test/paral
 
 ## [How to install it](#contents)
 
->>> [!tip] Шаги по установке продукта
+**Шаги по установке продукта**:
 
 1. Скачать необходимый компилятор из реестра артефактов
 2. Удалить старые бинарные файлы и экспортировать новые `tar -C /usr/local --strip-components 1 -xzf node-v22.13.0-linux-x86_64.tar.gz`
 3. Проверить версию установленного бинарного файла `node --version`
->>>
 
 Пример:
 
@@ -318,4 +331,13 @@ rm -rfv /usr/local/bin/npm \
         /usr/local/bin/_node/
 ```
 
-::include{file=docs/cya.md}
+<!-- markdownlint-disable MD033 MD041 MD051 -->
+<table align="center"><tr><td align="center" width="9999">
+<img src="docs/images/node-mascot.png" align="center" width="30%" height="30%" alt="NodeJS mascot image">
+
+<div align="center"> <sub> Rocket turtle под авторством Angela Angelini. </sub> </div>
+
+### [Cya!](#contents)
+
+</td></tr></table>
+<!-- markdownlint-enable MD033 MD041 MD051 -->
