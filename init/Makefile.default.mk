@@ -177,3 +177,7 @@ application-view: ## Check build version
 	./node -e "console.log('Hello from Node.js ' + process.version)"
 
 repack: prerequisites install application-view ## Reinstall this build
+
+clean:
+	@echo
+	$(RM) -r ./$(MAKEFILE_NODE_DEPLOY_DIR)
