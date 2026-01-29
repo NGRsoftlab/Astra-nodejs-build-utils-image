@@ -132,20 +132,20 @@ docker build \
 - Представление [Makefile-а](init/Makefile.svace.mk), который используется в анализатором Svace
 - Представление [Makefile-а](init/Makefile.ninja.mk) на основе [ninja-build](https://ninja-build.org/), но в CI-е падает с ошибкой сборки:
 
-```text
-FAILED: obj/deps/v8/src/compiler/v8_compiler.pipeline.o
-c++ -MMD -MF obj/deps/v8/src/compiler/v8_compiler.pipeline.o.d -D_GLIBCXX_USE_CXX11_ABI=1 -DNODE_OPENSSL_CONF_NAME=nodejs_conf -DNODE_OPENSSL_HAS_QUIC -DICU_NO_USER_DATA_OVERRIDE -DV8_GYP_BUILD -DV8_TYPED_ARRAY_MAX_SIZE_IN_HEAP=64 -D__STDC_FORMAT_MACROS -DOPENSSL_NO_PINSHARED -DOPENSSL_THREADS -DV8_TARGET_ARCH_X64 -DV8_HAVE_TARGET_OS -DV8_TARGET_OS_LINUX '-DV8_EMBEDDER_STRING="-node.20"' -DENABLE_DISASSEMBLER -DV8_PROMISE_INTERNAL_FIELD_COUNT=1 -DV8_ENABLE_PRIVATE_MAPPING_FORK_OPTIMIZATION -DV8_SHORT_BUILTIN_CALLS -DOBJECT_PRINT -DV8_INTL_SUPPORT -DV8_ATOMIC_OBJECT_FIELD_WRITES -DV8_ENABLE_LAZY_SOURCE_POSITIONS -DV8_USE_SIPHASH -DV8_SHARED_RO_HEAP -DV8_WIN64_UNWINDING_INFO -DV8_ENABLE_REGEXP_INTERPRETER_THREADED_DISPATCH -DV8_USE_ZLIB -DV8_ENABLE_TURBOFAN -DV8_ENABLE_WEBASSEMBLY -DV8_ENABLE_JAVASCRIPT_PROMISE_HOOKS -DV8_ALLOCATION_FOLDING -DV8_ALLOCATION_SITE_TRACKING -DV8_ADVANCED_BIGINT_ALGORITHMS -DUCONFIG_NO_SERVICE=1 -DU_ENABLE_DYLOAD=0 -DU_STATIC_IMPLEMENTATION=1 -DU_HAVE_STD_STRING=1 -DUCONFIG_NO_BREAK_ITERATION=0 -I../../deps/v8 -I../../deps/v8/include -Igen/generate-bytecode-output-root -Igen -I../../deps/icu-small/source/i18n -I../../deps/icu-small/source/common -pthread -Wno-unused-parameter -Wno-return-type -flax-vector-conversions -Wno-invalid-offsetof -fno-strict-aliasing -m64 -m64 -O3 -fno-omit-frame-pointer -fdata-sections -ffunction-sections -O3 -fno-rtti -fno-exceptions -std=gnu++17  -c ../../deps/v8/src/compiler/pipeline.cc -o obj/deps/v8/src/compiler/v8_compiler.pipeline.o
-c++: fatal error: Killed signal terminated program cc1plus
-compilation terminated.
-[3250/4019] CXX obj/deps/v8/src/wasm/v8_base_without_compiler.wasm-result.o
-[3251/4019] CXX obj/deps/v8/src/compiler/turboshaft/v8_turboshaft.store-store-elimination-phase.o
-FAILED: obj/deps/v8/src/compiler/turboshaft/v8_turboshaft.store-store-elimination-phase.o
-c++ -MMD -MF obj/deps/v8/src/compiler/turboshaft/v8_turboshaft.store-store-elimination-phase.o.d -D_GLIBCXX_USE_CXX11_ABI=1 -DNODE_OPENSSL_CONF_NAME=nodejs_conf -DNODE_OPENSSL_HAS_QUIC -DICU_NO_USER_DATA_OVERRIDE -DV8_GYP_BUILD -DV8_TYPED_ARRAY_MAX_SIZE_IN_HEAP=64 -D__STDC_FORMAT_MACROS -DOPENSSL_NO_PINSHARED -DOPENSSL_THREADS -DV8_TARGET_ARCH_X64 -DV8_HAVE_TARGET_OS -DV8_TARGET_OS_LINUX '-DV8_EMBEDDER_STRING="-node.20"' -DENABLE_DISASSEMBLER -DV8_PROMISE_INTERNAL_FIELD_COUNT=1 -DV8_ENABLE_PRIVATE_MAPPING_FORK_OPTIMIZATION -DV8_SHORT_BUILTIN_CALLS -DOBJECT_PRINT -DV8_INTL_SUPPORT -DV8_ATOMIC_OBJECT_FIELD_WRITES -DV8_ENABLE_LAZY_SOURCE_POSITIONS -DV8_USE_SIPHASH -DV8_SHARED_RO_HEAP -DV8_WIN64_UNWINDING_INFO -DV8_ENABLE_REGEXP_INTERPRETER_THREADED_DISPATCH -DV8_USE_ZLIB -DV8_ENABLE_TURBOFAN -DV8_ENABLE_WEBASSEMBLY -DV8_ENABLE_JAVASCRIPT_PROMISE_HOOKS -DV8_ALLOCATION_FOLDING -DV8_ALLOCATION_SITE_TRACKING -DV8_ADVANCED_BIGINT_ALGORITHMS -DUCONFIG_NO_SERVICE=1 -DU_ENABLE_DYLOAD=0 -DU_STATIC_IMPLEMENTATION=1 -DU_HAVE_STD_STRING=1 -DUCONFIG_NO_BREAK_ITERATION=0 -I../../deps/v8 -I../../deps/v8/include -Igen/generate-bytecode-output-root -Igen -I../../deps/icu-small/source/i18n -I../../deps/icu-small/source/common -pthread -Wno-unused-parameter -Wno-return-type -flax-vector-conversions -Wno-invalid-offsetof -fno-strict-aliasing -m64 -m64 -O3 -fno-omit-frame-pointer -fdata-sections -ffunction-sections -O3 -fno-rtti -fno-exceptions -std=gnu++17  -c ../../deps/v8/src/compiler/turboshaft/store-store-elimination-phase.cc -o obj/deps/v8/src/compiler/turboshaft/v8_turboshaft.store-store-elimination-phase.o
-c++: fatal error: Killed signal terminated program cc1plus
-compilation terminated.
-ninja: build stopped: subcommand failed.
-make[1]: *** [Makefile:149: node] Error 1
-```
+    ```plaintext
+    FAILED: obj/deps/v8/src/compiler/v8_compiler.pipeline.o
+    c++ -MMD -MF obj/deps/v8/src/compiler/v8_compiler.pipeline.o.d -D_GLIBCXX_USE_CXX11_ABI=1 -DNODE_OPENSSL_CONF_NAME=nodejs_conf -DNODE_OPENSSL_HAS_QUIC -DICU_NO_USER_DATA_OVERRIDE -DV8_GYP_BUILD -DV8_TYPED_ARRAY_MAX_SIZE_IN_HEAP=64 -D__STDC_FORMAT_MACROS -DOPENSSL_NO_PINSHARED -DOPENSSL_THREADS -DV8_TARGET_ARCH_X64 -DV8_HAVE_TARGET_OS -DV8_TARGET_OS_LINUX '-DV8_EMBEDDER_STRING="-node.20"' -DENABLE_DISASSEMBLER -DV8_PROMISE_INTERNAL_FIELD_COUNT=1 -DV8_ENABLE_PRIVATE_MAPPING_FORK_OPTIMIZATION -DV8_SHORT_BUILTIN_CALLS -DOBJECT_PRINT -DV8_INTL_SUPPORT -DV8_ATOMIC_OBJECT_FIELD_WRITES -DV8_ENABLE_LAZY_SOURCE_POSITIONS -DV8_USE_SIPHASH -DV8_SHARED_RO_HEAP -DV8_WIN64_UNWINDING_INFO -DV8_ENABLE_REGEXP_INTERPRETER_THREADED_DISPATCH -DV8_USE_ZLIB -DV8_ENABLE_TURBOFAN -DV8_ENABLE_WEBASSEMBLY -DV8_ENABLE_JAVASCRIPT_PROMISE_HOOKS -DV8_ALLOCATION_FOLDING -DV8_ALLOCATION_SITE_TRACKING -DV8_ADVANCED_BIGINT_ALGORITHMS -DUCONFIG_NO_SERVICE=1 -DU_ENABLE_DYLOAD=0 -DU_STATIC_IMPLEMENTATION=1 -DU_HAVE_STD_STRING=1 -DUCONFIG_NO_BREAK_ITERATION=0 -I../../deps/v8 -I../../deps/v8/include -Igen/generate-bytecode-output-root -Igen -I../../deps/icu-small/source/i18n -I../../deps/icu-small/source/common -pthread -Wno-unused-parameter -Wno-return-type -flax-vector-conversions -Wno-invalid-offsetof -fno-strict-aliasing -m64 -m64 -O3 -fno-omit-frame-pointer -fdata-sections -ffunction-sections -O3 -fno-rtti -fno-exceptions -std=gnu++17  -c ../../deps/v8/src/compiler/pipeline.cc -o obj/deps/v8/src/compiler/v8_compiler.pipeline.o
+    c++: fatal error: Killed signal terminated program cc1plus
+    compilation terminated.
+    [3250/4019] CXX obj/deps/v8/src/wasm/v8_base_without_compiler.wasm-result.o
+    [3251/4019] CXX obj/deps/v8/src/compiler/turboshaft/v8_turboshaft.store-store-elimination-phase.o
+    FAILED: obj/deps/v8/src/compiler/turboshaft/v8_turboshaft.store-store-elimination-phase.o
+    c++ -MMD -MF obj/deps/v8/src/compiler/turboshaft/v8_turboshaft.store-store-elimination-phase.o.d -D_GLIBCXX_USE_CXX11_ABI=1 -DNODE_OPENSSL_CONF_NAME=nodejs_conf -DNODE_OPENSSL_HAS_QUIC -DICU_NO_USER_DATA_OVERRIDE -DV8_GYP_BUILD -DV8_TYPED_ARRAY_MAX_SIZE_IN_HEAP=64 -D__STDC_FORMAT_MACROS -DOPENSSL_NO_PINSHARED -DOPENSSL_THREADS -DV8_TARGET_ARCH_X64 -DV8_HAVE_TARGET_OS -DV8_TARGET_OS_LINUX '-DV8_EMBEDDER_STRING="-node.20"' -DENABLE_DISASSEMBLER -DV8_PROMISE_INTERNAL_FIELD_COUNT=1 -DV8_ENABLE_PRIVATE_MAPPING_FORK_OPTIMIZATION -DV8_SHORT_BUILTIN_CALLS -DOBJECT_PRINT -DV8_INTL_SUPPORT -DV8_ATOMIC_OBJECT_FIELD_WRITES -DV8_ENABLE_LAZY_SOURCE_POSITIONS -DV8_USE_SIPHASH -DV8_SHARED_RO_HEAP -DV8_WIN64_UNWINDING_INFO -DV8_ENABLE_REGEXP_INTERPRETER_THREADED_DISPATCH -DV8_USE_ZLIB -DV8_ENABLE_TURBOFAN -DV8_ENABLE_WEBASSEMBLY -DV8_ENABLE_JAVASCRIPT_PROMISE_HOOKS -DV8_ALLOCATION_FOLDING -DV8_ALLOCATION_SITE_TRACKING -DV8_ADVANCED_BIGINT_ALGORITHMS -DUCONFIG_NO_SERVICE=1 -DU_ENABLE_DYLOAD=0 -DU_STATIC_IMPLEMENTATION=1 -DU_HAVE_STD_STRING=1 -DUCONFIG_NO_BREAK_ITERATION=0 -I../../deps/v8 -I../../deps/v8/include -Igen/generate-bytecode-output-root -Igen -I../../deps/icu-small/source/i18n -I../../deps/icu-small/source/common -pthread -Wno-unused-parameter -Wno-return-type -flax-vector-conversions -Wno-invalid-offsetof -fno-strict-aliasing -m64 -m64 -O3 -fno-omit-frame-pointer -fdata-sections -ffunction-sections -O3 -fno-rtti -fno-exceptions -std=gnu++17  -c ../../deps/v8/src/compiler/turboshaft/store-store-elimination-phase.cc -o obj/deps/v8/src/compiler/turboshaft/v8_turboshaft.store-store-elimination-phase.o
+    c++: fatal error: Killed signal terminated program cc1plus
+    compilation terminated.
+    ninja: build stopped: subcommand failed.
+    make[1]: *** [Makefile:149: node] Error 1
+    ```
 
 ### [Assembly requirements](#contents)
 
@@ -181,12 +181,12 @@ make[1]: *** [Makefile:149: node] Error 1
 
 Легенда:
 
-- ✅ — все тесты проходят
-- ⚠️ — возможны проблемы (нужны патчи)
-- ❌ — не поддерживается
+- ✅ - все тесты проходят
+- ⚠️ - возможны проблемы (нужны патчи)
+- ❌ - не поддерживается
 
-| Версия Node.js |   Астра 1.7.x (Debian 10)    | Астра 1.8.x (Debian 12) |
-| :------------: | :--------------------------: | :---------------------: |
+| Версия Node.js |   Астра 1.7.x (Debian 10)     | Астра 1.8.x (Debian 12)  |
+| :------------: | :---------------------------: | :----------------------: |
 |  Node.js 12.x  | ⚠️ (есть проблемы с тестами)  |   ❌ (нужен Python2.7)   |
 |  Node.js 14.x  |              ✅               |            ✅            |
 |  Node.js 16.x  |           ✅ (LTS)            |            ✅            |
@@ -219,69 +219,69 @@ make -f Makefile-build all
 
 - Ошибка `Error: getaddrinfo ENOTFOUND localhost` связана с невозможность обращения к LO ввиду проблем с `/etc/hosts` файлом. Решение состоит в том, чтобы использовать тег сборки `docker-without-host-mapping`, который предотвращает общий маппинг хостового файла в сборки типа `dind`
 
-```plaintext
-Path: parallel/test-net-socket-connect-without-cb
-node:events:497
-      throw er; // Unhandled 'error' event
+    ```plaintext
+    Path: parallel/test-net-socket-connect-without-cb
+    node:events:497
+          throw er; // Unhandled 'error' event
+          ^
+    Error: getaddrinfo ENOTFOUND localhost
+        at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+    Emitted 'error' event on Socket instance at:
+        at emitErrorNT (node:internal/streams/destroy:169:8)
+        at emitErrorCloseNT (node:internal/streams/destroy:128:3)
+        at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+      errno: -3007,
+      code: 'ENOTFOUND',
+      syscall: 'getaddrinfo',
+      hostname: 'localhost'
+    }
+    Node.js v21.7.3
+    Command: out/Release/node /builds/borrowed-components/interpreters/nodejs/node/test/parallel/test-net-socket-connect-without-cb.js
+    === release test-tcp-wrap-listen ===
+    Path: parallel/test-tcp-wrap-listen
+    (node:129747) internal/test/binding: These APIs are for internal testing only. Do not use them.
+    (Use `node --trace-warnings ...` to show where the warning was created)
+    node:events:497
+          throw er; // Unhandled 'error' event
+          ^
+    Error: getaddrinfo ENOTFOUND localhost
+        at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+    Emitted 'error' event on Socket instance at:
+        at emitErrorNT (node:internal/streams/destroy:169:8)
+        at emitErrorCloseNT (node:internal/streams/destroy:128:3)
+        at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+      errno: -3007,
+      code: 'ENOTFOUND',
+      syscall: 'getaddrinfo',
+      hostname: 'localhost'
+    }
+    Node.js v21.7.3
+    Command: out/Release/node --expose-internals /builds/borrowed-components/interpreters/nodejs/node/test/parallel/test-tcp-wrap-listen.js
+    === release test-worker-message-port-transfer-target ===
+    Path: parallel/test-worker-message-port-transfer-target
+    (node:136697) Warning: The target port was posted to itself, and the communication channel was lost
+    (Use `node --trace-warnings ...` to show where the warning was created)
+    node:assert:173
+      throw err;
       ^
-Error: getaddrinfo ENOTFOUND localhost
-    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
-Emitted 'error' event on Socket instance at:
-    at emitErrorNT (node:internal/streams/destroy:169:8)
-    at emitErrorCloseNT (node:internal/streams/destroy:128:3)
-    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
-  errno: -3007,
-  code: 'ENOTFOUND',
-  syscall: 'getaddrinfo',
-  hostname: 'localhost'
-}
-Node.js v21.7.3
-Command: out/Release/node /builds/borrowed-components/interpreters/nodejs/node/test/parallel/test-net-socket-connect-without-cb.js
-=== release test-tcp-wrap-listen ===
-Path: parallel/test-tcp-wrap-listen
-(node:129747) internal/test/binding: These APIs are for internal testing only. Do not use them.
-(Use `node --trace-warnings ...` to show where the warning was created)
-node:events:497
-      throw er; // Unhandled 'error' event
-      ^
-Error: getaddrinfo ENOTFOUND localhost
-    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
-Emitted 'error' event on Socket instance at:
-    at emitErrorNT (node:internal/streams/destroy:169:8)
-    at emitErrorCloseNT (node:internal/streams/destroy:128:3)
-    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
-  errno: -3007,
-  code: 'ENOTFOUND',
-  syscall: 'getaddrinfo',
-  hostname: 'localhost'
-}
-Node.js v21.7.3
-Command: out/Release/node --expose-internals /builds/borrowed-components/interpreters/nodejs/node/test/parallel/test-tcp-wrap-listen.js
-=== release test-worker-message-port-transfer-target ===
-Path: parallel/test-worker-message-port-transfer-target
-(node:136697) Warning: The target port was posted to itself, and the communication channel was lost
-(Use `node --trace-warnings ...` to show where the warning was created)
-node:assert:173
-  throw err;
-  ^
-AssertionError [ERR_ASSERTION]: The communication channel is still open at /builds/borrowed-components/interpreters/nodejs/node/test/parallel/test-worker-message-port-transfer-target.js:21
-    at Timeout.mustNotCall [as _onTimeout] (/builds/borrowed-components/interpreters/nodejs/node/test/common/index.js:554:12)
-    at listOnTimeout (node:internal/timers:573:17)
-    at process.processTimers (node:internal/timers:514:7) {
-  generatedMessage: false,
-  code: 'ERR_ASSERTION',
-  actual: undefined,
-  expected: undefined,
-  operator: 'fail'
-}
-Node.js v21.7.3
-Command: out/Release/node /builds/borrowed-components/interpreters/nodejs/node/test/parallel/test-worker-message-port-transfer-target.js
-[05:45|% 100|+ 4045|-   3]: Done
-Failed tests:
-out/Release/node /builds/borrowed-components/interpreters/nodejs/node/test/parallel/test-net-socket-connect-without-cb.js
-out/Release/node --expose-internals /builds/borrowed-components/interpreters/nodejs/node/test/parallel/test-tcp-wrap-listen.js
-out/Release/node /builds/borrowed-components/interpreters/nodejs/node/test/parallel/test-worker-message-port-transfer-target.js
-```
+    AssertionError [ERR_ASSERTION]: The communication channel is still open at /builds/borrowed-components/interpreters/nodejs/node/test/parallel/test-worker-message-port-transfer-target.js:21
+        at Timeout.mustNotCall [as _onTimeout] (/builds/borrowed-components/interpreters/nodejs/node/test/common/index.js:554:12)
+        at listOnTimeout (node:internal/timers:573:17)
+        at process.processTimers (node:internal/timers:514:7) {
+      generatedMessage: false,
+      code: 'ERR_ASSERTION',
+      actual: undefined,
+      expected: undefined,
+      operator: 'fail'
+    }
+    Node.js v21.7.3
+    Command: out/Release/node /builds/borrowed-components/interpreters/nodejs/node/test/parallel/test-worker-message-port-transfer-target.js
+    [05:45|% 100|+ 4045|-   3]: Done
+    Failed tests:
+    out/Release/node /builds/borrowed-components/interpreters/nodejs/node/test/parallel/test-net-socket-connect-without-cb.js
+    out/Release/node --expose-internals /builds/borrowed-components/interpreters/nodejs/node/test/parallel/test-tcp-wrap-listen.js
+    out/Release/node /builds/borrowed-components/interpreters/nodejs/node/test/parallel/test-worker-message-port-transfer-target.js
+    ```
 
 | Проблема           |   Решение (Астра 1.7.5)    |    Решение (Астра 1.8.1)    |
 | :----------------- | :------------------------: | :-------------------------: |
